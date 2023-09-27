@@ -1,6 +1,6 @@
 //API à utiliser pour le travail: https://randomuser.me/api/?results=5
-let image = document.getElementById('image')
-console.log(image)
+let imagePersonnage = document.getElementById('image')
+console.log(imagePersonnage)
 fetch('https://randomuser.me/api/?results=5')
 .then(response=> response.json())
 .then(data=>{
@@ -11,7 +11,8 @@ fetch('https://randomuser.me/api/?results=5')
     let output = '<h2>Listes de personnages</h2>' 
     secondArray.forEach(function(element) {
         
-        image.src += element.picture.medium + '<br/>'
+        imagePersonnage.src = element.picture.large
+        console.log(imagePersonnage)
         output += element.name.title +' '+ element.name.first + ' ' + element.name.last + '<br/> '
         output += element.email + '<br/>'
         
