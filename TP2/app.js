@@ -6,24 +6,26 @@ fetch('https://randomuser.me/api/?results=5')
     let firstArray = Object.values(data)   
     let secondArray = Object.values(firstArray[0])
     let imagePersonnage    
-    let output = ['<h2>Listes de personnages</h2>']   
-
+    let output = '<h2>Listes de personnages</h2>'   
+   
     secondArray.forEach(function(element) {        
         imagePersonnage = element.picture.large         
-        names = element.name.title +' '+ element.name.first + ' ' + element.name.last + '<br/> '
-        emails = element.email + '<br/>'
+        names = 'Nom: ' + element.name.title +' '+ element.name.first + ' ' + element.name.last + '</br>'
+        emails = 'Email: ' + element.email + '</br>'
         showImage(imagePersonnage)
-        printInfo(names, emails)              
+        showInfo(names, emails)              
     })
 
-    function printInfo(names, emails){       
-        output += names + emails
-        document.getElementById('container').innerHTML = output    
+    function showInfo(names, emails){            
+        let showText = document.createElement('div') 
+        showText.innerHTML = names + emails + '</br>'          
+        document.getElementById('container').innerHTML = output        
+        document.body.append(showText)
    }
 
    function showImage(imagePersonnage){
-        const showImg = document.createElement('img')
-        showImg.src=imagePersonnage
+        let showImg = document.createElement('img')
+        showImg.src=imagePersonnage       
         document.body.appendChild(showImg)
    }
 })
